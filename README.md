@@ -1,4 +1,4 @@
-![Screenshot rozšíření](https://github.com/Misadcz/timeforcode/timeforcode.png?raw=true)
+![Screenshot rozšíření](https://github.com/Misadcz/timeforcode/blob/main/timeforcode.png)
 
 # ⏱️ TimeForCode – VS Code Extension
 
