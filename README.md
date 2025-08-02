@@ -1,65 +1,41 @@
-# timeforcode README
+![Screenshot rozšíření](https://github.com/Misadcz/timeforcode/timeforcode.png?raw=true)
 
-This is the README for your extension "timeforcode". After writing up a brief description, we recommend including the following sections.
+# ⏱️ TimeForCode – VS Code Extension
 
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+**TimeForCode** je jednoduché rozšíření pro Visual Studio Code, které sleduje, kolik času strávíš v jednotlivých souborech při práci. Umožňuje vývojářům mít přehled o svém pracovním čase přímo v rámci VSCode – bez nutnosti externích nástrojů.
 
 ---
 
-## Working with Markdown
+## ✨ Funkce
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+- ⏳ Měření času stráveného v každém souboru
+- 🧠 Zobrazení denního a celkového přehledu
+- 📁 Ukládání dat do JSON souboru (`code-time-data.json`)
+- 🔄 Automatická aktualizace při změně aktivního souboru
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+---
 
-## For more information
+## 🚀 Instalace
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+1. Otevři VS Code
+2. Přejdi do `Extensions` (`Ctrl+Shift+X`)
+3. Hledej `TimeForCode` (až bude publikováno) **nebo**
+4. Nainstaluj ručně:
+    ```bash
+    git clone https://github.com/Misadcz/timeforcode
+    cd timeforcode
+    npm install
+    npm run compile
+    code .
+    ```
+5. Stiskni `F5` pro spuštění rozšíření v Dev módu
 
-**Enjoy!**
+---
+
+## ⚙️ Použití
+
+- Sleduj stav v **status baru**
+- Kliknutím můžeš otevřít WebView s přehledem
+- Data najdeš v `code-time-data.json` ve složce projektu
+
+---
