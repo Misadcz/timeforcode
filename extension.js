@@ -60,14 +60,11 @@ function setTimesFile(data) { // Nastaví timesFile na aktuální data
     let today = now.toISOString().split('T')[0]; // získej dnešní datum ve formátu YYYY-MM-DD
 
     timesFile = {};
-    if (data[today] && data[today].files) {
+
+    if (data[today] && data[today].files)
         timesFile = timesFileToSeconds(data[today].files); // převede časy souborů na sekundy
-    } else {
+    else
         timesFile = {}; // pokud nejsou data pro dnešek, nastav prázdný objekt
-    }
-    if (outputChannel) {
-        outputChannel.appendLine(`Times file initialized for ${today}: ${JSON.stringify(timesFile, null, 2)}`);
-    }
 }
 
 function deactivate() { // Deaktivace rozšíření
@@ -76,9 +73,9 @@ function deactivate() { // Deaktivace rozšíření
 
 function formatTime(seconds) { // Formátuje čas v sekundách na HH:MM:SS
     // Kontrola na NaN a neplatné hodnoty
-    if (isNaN(seconds) || seconds < 0) {
+    if (isNaN(seconds) || seconds < 0) 
         return "00:00:00";
-    }
+    
 
     const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
     const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
@@ -124,7 +121,7 @@ function statusBarInit(context) { // Inicializace stavového řádku
 
         // Získej dnešní celkový čas
         const todayData = fileData[today]?.summary || { duration: '00:00:00' };
-        const currentFileTime = currentFile && timesFile[currentFile] ? formatTime(timesFile[currentFile]) : '00:00:00';
+        //const currentFileTime = currentFile && timesFile[currentFile] ? formatTime(timesFile[currentFile]) : '00:00:00';
 
         statusBar.text = `$(clock) Today: ${todayData.duration} `; // | Current: ${currentFileTime}
     }
@@ -143,15 +140,15 @@ function statusBarInit(context) { // Inicializace stavového řádku
     context.subscriptions.push(statusBar);
 
     const command = vscode.commands.registerCommand('extension.showCodingStats', () => {
-        showWebviewPanel(context);
+        showWebviewPanel(/*context*/);
     });
     context.subscriptions.push(command);
 }
 
 function convertToSeconds(timeString) { // Převede časový řetězec na sekundy
-    if (!timeString || typeof timeString !== 'string') {
+    if (!timeString || typeof timeString !== 'string') 
         return 0;
-    }
+    
 
     const parts = timeString.split(':').map(Number);
     if (parts.length === 3 && !parts.some(isNaN))
@@ -230,7 +227,7 @@ function timesFileToSeconds(timesFile) { // Převede timesFile z formátu HH:MM:
     return result;
 }
 
-function showWebviewPanel(context) { // Zobrazí webview panel s reportem
+function showWebviewPanel(/*context*/) { // Zobrazí webview panel s reportem
     const panel = vscode.window.createWebviewPanel(
         'codingStats',
         'Coding Time Report',
@@ -269,9 +266,9 @@ function showWebviewPanel(context) { // Zobrazí webview panel s reportem
             let seconds = typeof timeValue === 'string' ? convertToSeconds(timeValue) : timeValue;
 
             // Kontrola na NaN
-            if (isNaN(seconds) || seconds < 0) {
+            if (isNaN(seconds) || seconds < 0) 
                 seconds = 0;
-            }
+            
 
             const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
             const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
@@ -310,17 +307,17 @@ function getWebviewContent(todayData, totalFormatted, fileTimeTable) { // Webvie
     // Prepare pie chart data for today's files
     const todayStr = today.toISOString().split('T')[0];
     const todayFiles = fileData[todayStr]?.files || {};
-    
+
     const pieData = [];
     const pieLabels = [];
     const pieColors = [];
-    
+
     // Generate colors for pie chart
     const colors = [
         '#00ffcc', '#ff6384', '#36a2eb', '#ffce56', '#4bc0c0',
         '#9966ff', '#ff9f40', '#ff6384', '#c9cbcf', '#4bc0c0'
     ];
-    
+
     let colorIndex = 0;
     Object.entries(todayFiles).forEach(([file, timeValue]) => {
         const seconds = typeof timeValue === 'string' ? convertToSeconds(timeValue) : timeValue;
