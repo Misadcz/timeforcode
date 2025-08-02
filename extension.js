@@ -140,7 +140,7 @@ function statusBarInit(context) { // Inicializace stavového řádku
     context.subscriptions.push(statusBar);
 
     const command = vscode.commands.registerCommand('extension.showCodingStats', () => {
-        showWebviewPanel(/*context*/);
+        showWebviewPanel(context); // <-- předat context
     });
     context.subscriptions.push(command);
 }
@@ -227,7 +227,7 @@ function timesFileToSeconds(timesFile) { // Převede timesFile z formátu HH:MM:
     return result;
 }
 
-function showWebviewPanel(/*context*/) { // Zobrazí webview panel s reportem
+function showWebviewPanel(context) { // <-- přijímat context
     const panel = vscode.window.createWebviewPanel(
         'codingStats',
         'Coding Time Report',
